@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { FaPlay, FaPause, FaStepBackward, FaStepForward, FaVolumeUp } from 'react-icons/fa';
+import { FaPlay, FaPause, FaStepBackward, FaStepForward } from 'react-icons/fa';
 
 interface CustomAudioPlayerProps {
     src: string;
