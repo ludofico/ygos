@@ -1,4 +1,3 @@
-import cover from './assets/ygos.jpg'
 import './App.css'
 import TiltedCard from './components/TiltedCard'
 
@@ -8,7 +7,7 @@ function App() {
   return (
     <div className="flex justify-center items-center h-screen w-full p-4">
       <TiltedCard
-        imageSrc={cover}
+        imageSrc="./ygos.jpg"
         altText="24ent logo"
         captionText="24ent"
         containerHeight="auto"
