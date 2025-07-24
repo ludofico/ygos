@@ -237,12 +237,13 @@ export default function TiltedCard({
     <figure
       id="cover"
       ref={ref}
-      className="relative w-fit max-h-full [perspective:800px] flex flex-col items-center justify-center rounded-xl"
+      className="relative w-fit max-h-full [perspective:800px] flex flex-col items-center justify-center rounded-xl "
       style={{
         height: containerHeight,
         width: containerWidth,
         maxWidth: '400px',
         borderRadius: '1rem',
+        
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
@@ -262,6 +263,27 @@ export default function TiltedCard({
           scale,
           borderRadius: '1rem',
           overflow: 'hidden',
+          boxShadow: `
+            /* Bordo sottile per definizione */
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            /* Ombre graduate nere per profondità */
+            0 8px 16px rgba(0, 0, 0, 0.4),
+            0 16px 32px rgba(0, 0, 0, 0.35),
+            0 32px 64px rgba(0, 0, 0, 0.3),
+            0 64px 128px rgba(0, 0, 0, 0.25),
+            /* Glow nero sottile */
+            0 0 40px rgba(0, 0, 0, 0.2),
+            0 0 80px rgba(0, 0, 0, 0.15),
+            /* Riflessi interni discreti */
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.15)
+          `,
+          filter: `
+            drop-shadow(0 30px 60px rgba(0, 0, 0, 0.4))
+            drop-shadow(0 60px 120px rgba(0, 0, 0, 0.3))
+            drop-shadow(0 0 25px rgba(0, 0, 0, 0.25))
+            contrast(1.1) saturate(1.05) brightness(1.02)
+          `
         }}
       >
         <motion.img
