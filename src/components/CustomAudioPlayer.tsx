@@ -68,23 +68,7 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
         }
     };
 
-    const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const audio = audioRef.current;
-        if (!audio) return;
-
-        const time = (parseFloat(e.target.value) / 100) * duration;
-        audio.currentTime = time;
-        setCurrentTime(time);
-    };
-
-    const formatTime = (time: number) => {
-        const minutes = Math.floor(time / 60);
-        const seconds = Math.floor(time % 60);
-        return `${minutes}:${seconds.toString().padStart(2, '0')}`;
-    };
-
-    const progress = duration ? (currentTime / duration) * 100 : 0;
-
+  
     return (
         <div className={`bg-black/60 backdrop-blur-sm rounded-lg px-1 pt-2 pb-1 scale-60 text-white ${className}`}
             style={{
