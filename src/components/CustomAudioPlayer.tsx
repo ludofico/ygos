@@ -8,23 +8,20 @@ interface CustomAudioPlayerProps {
 
 const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = '' }) => {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
+   
     const audioRef = useRef<HTMLAudioElement>(null);
 
     useEffect(() => {
         const audio = audioRef.current;
         if (!audio) return;
 
-        const updateTime = () => setCurrentTime(audio.currentTime);
-        const updateDuration = () => setDuration(audio.duration);
+        
+       
         const handlePlay = () => setIsPlaying(true);
         const handlePause = () => setIsPlaying(false);
         const handleEnded = () => setIsPlaying(false);
 
-        audio.addEventListener('timeupdate', updateTime);
-        audio.addEventListener('loadedmetadata', updateDuration);
-        audio.addEventListener('play', handlePlay);
+            audio.addEventListener('play', handlePlay);
         audio.addEventListener('pause', handlePause);
         audio.addEventListener('ended', handleEnded);
 
@@ -43,8 +40,6 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
         const playStateInterval = setInterval(checkPlayState, 100);
 
         return () => {
-            audio.removeEventListener('timeupdate', updateTime);
-            audio.removeEventListener('loadedmetadata', updateDuration);
             audio.removeEventListener('play', handlePlay);
             audio.removeEventListener('pause', handlePause);
             audio.removeEventListener('ended', handleEnded);
@@ -122,12 +117,7 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
                         boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
                         filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))'
                     }}
-                    onClick={() => {
-                        const audio = audioRef.current;
-                        if (audio) {
-                            audio.currentTime = Math.min(duration, audio.currentTime + 10);
-                        }
-                    }}
+                   
                 >
                     <FaStepForward size={16} />
                 </button>
