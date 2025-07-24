@@ -40,7 +40,7 @@ export default function TiltedCard({
   imageWidth = "300px",
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
-
+  showMobileWarning = true,
   showTooltip = true,
   displayOverlayContent = false,
 }: TiltedCardProps) {
@@ -252,7 +252,7 @@ export default function TiltedCard({
       onTouchMove={handleTouch}
       onTouchEnd={handleTouchEnd}
     >
-      {/* {showMobileWarning && isMobile && (
+      {showMobileWarning && isMobile && (
         <div className="absolute top-4 text-center text-xs px-4 py-2 bg-black/50 rounded-lg text-white backdrop-blur-sm z-10">
           {orientationSupported && hasOrientationPermission
             ? "Inclina il dispositivo per l'effetto 3D"
@@ -260,7 +260,7 @@ export default function TiltedCard({
               ? "Tocca e trascina per l'effetto 3D"
               : "Tocca per abilitare il giroscopio"}
         </div>
-      )} */}
+      )}
 
       <motion.div
         className="relative [transform-style:preserve-3d] "

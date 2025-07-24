@@ -1,11 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import {Analytics} from "@vercel/analytics/next"
 import Lightning from './components/Lightning'
 import App from './App.tsx'
 import { ThemeProvider } from './components/theme-provider.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <Analytics />
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <div
         style={{

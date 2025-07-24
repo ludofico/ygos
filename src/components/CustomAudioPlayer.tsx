@@ -86,14 +86,31 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
     const progress = duration ? (currentTime / duration) * 100 : 0;
 
     return (
-        <div className={`bg-black/50 backdrop-blur-xs rounded-lg px-3 pt-3 pb-1 scale-75  text-white ${className}`}>
-            <p className='flex justify-center font-medium'>Ygos - Nulla mi cambia</p>
+        <div className={`bg-black/60 backdrop-blur-sm rounded-lg px-1 pt-2 pb-1 scale-60 text-white ${className}`}
+            style={{
+                boxShadow: `
+                     0 0 5px rgba(0, 0, 0, 0.8),
+                     0 5px 10px rgba(0, 0, 0, 0.6),
+                     inset 0 1px 0 rgba(255, 255, 255, 0.1)
+                 `,
+                filter: 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4))'
+            }}>
+            <div className="overflow-hidden pb-3">
+                <p className="font-medium text-center whitespace-nowrap animate-scroll"
+                    style={{ textShadow: '0 2px 2px rgba(0, 0, 0, 0.8)' }}>
+                    Ygos - Nulla mi cambia
+                </p>
+            </div>
             <audio ref={audioRef} src={src} autoPlay />
 
             {/* Controls */}
-            <div className="flex items-center justify-center gap-4 mb-1">
+            <div className="flex items-center justify-center gap-4 pb-2">
                 <button
-                    className="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                    className="text-white/80 hover:text-white transition-all duration-200 p-2 rounded-full hover:bg-white/10"
+                    style={{
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+                        filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))'
+                    }}
                     onClick={() => {
                         const audio = audioRef.current;
                         if (audio) {
@@ -106,13 +123,21 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
 
                 <button
                     onClick={togglePlay}
-                    className="bg-white/20 hover:bg-white/30 transition-colors rounded-full p-3 text-white"
+                    className="bg-white/20 hover:bg-white/30 transition-all duration-200 rounded-full p-3 text-white"
+                    style={{
+                        boxShadow: '0 8px 20px rgba(0, 0, 0, 0.7), 0 4px 12px rgba(0, 0, 0, 0.5)',
+                        filter: 'drop-shadow(0 4px 16px rgba(0, 0, 0, 0.6))'
+                    }}
                 >
                     {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} />}
                 </button>
 
                 <button
-                    className="text-white/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                    className="text-white/80 hover:text-white transition-all duration-200 p-2 rounded-full hover:bg-white/10"
+                    style={{
+                        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.5)',
+                        filter: 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4))'
+                    }}
                     onClick={() => {
                         const audio = audioRef.current;
                         if (audio) {
@@ -125,7 +150,7 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
             </div>
 
             {/* Progress Bar */}
-            <div className="mb-3">
+            {/* <div className="">
                 <input
                     type="range"
                     min="0"
@@ -137,11 +162,11 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
                         background: `linear-gradient(to right, #ffffff ${progress}%, rgba(255,255,255,0.2) ${progress}%)`
                     }}
                 />
-                <div className="flex justify-between text-xs text-white/60 mt-1">
+                <div className="flex justify-between text-xs text-white/60">
                     <span>{formatTime(currentTime)}</span>
                     <span>{formatTime(duration)}</span>
                 </div>
-            </div>
+            </div> */}
 
             {/* Volume Control */}
 
@@ -164,6 +189,19 @@ const CustomAudioPlayer: React.FC<CustomAudioPlayerProps> = ({ src, className = 
           cursor: pointer;
           border: none;
           box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .animate-scroll {
+          animation: scroll-left 10s linear infinite;
+        }
+
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
         }
       `}</style>
         </div>
