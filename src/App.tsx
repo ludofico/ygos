@@ -1,4 +1,4 @@
-import cover from './assets/ygos.jpg'
+import cover from '../public/ygos.jpg'
 import './App.css'
 import TiltedCard from './components/TiltedCard'
 
